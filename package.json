@@ -3,8 +3,8 @@
   "version": "0.3.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build",
+    "dev": "vite --mode dev",
+    "build": "tsc && vite build --mode prod",
     "preview": "vite preview",
     "lint:prettier": "prettier --check .",
     "lintfix:prettier": "prettier --write .",
@@ -24,6 +24,7 @@
     "react": "^18.2.0",
     "react-bootstrap": "^2.5.0",
     "react-dom": "^18.2.0",
+    "react-iframe": "^1.8.5",
     "react-router-dom": "^6.4.2",
     "react-transition-group": "^4.4.5",
     "react-use": "^17.4.0",

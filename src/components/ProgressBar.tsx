@@ -1,36 +1,36 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 
-const proggressApi = '/progress'
+const proggressApi = '/status'
 
-interface Progress {
-  count: number
-  open_cnt: number
-  progress: number
+interface Status {
+  name: string
+  cpu: number
+  memory: number
+  traffic: number
 }
 
 const intervalMs = 6000
 
 export const ProgressBar = () => {
   const DEATH_API_URL =
-    import.meta.env.VITE_DEATH_API_URL || 'http://localhost:8080'
+    import.meta.env.VITE_DEATH_API_URL || 'http://localhost:8081'
 
   const instance = axios.create({
     baseURL: DEATH_API_URL,
   })
   const [count, setCount] = useState(0)
   const [progress, setProgress] = useState({
-    count: 0,
-    open_cnt: 0,
-    progress: 0,
+    name: 'デスマTV',
+    cpu: 11.4514,
+    memory: 11.514,
+    traffic: 114514,
   })
   useEffect(() => {
     instance
       .get(proggressApi)
       .then((response) => {
-        console.log('get progress')
-        console.log(JSON.parse(response.data))
-        setProgress(JSON.parse(response.data))
+        setProgress(response.data)
       })
       .catch(() => {
         console.log('通信に失敗しました')
@@ -41,10 +41,8 @@ export const ProgressBar = () => {
       instance
         .get(proggressApi)
         .then((response) => {
-          setProgress(JSON.parse(response.data))
+          setProgress(response.data)
           setCount(count + 1)
-
-          console.log(count + ' ' + response.data)
         })
         .catch(() => {
           console.log('通信に失敗しました')
@@ -62,7 +60,7 @@ export const ProgressBar = () => {
       <progress
         id="issue_progress"
         max="1"
-        value={progress.progress}
+        value={1.0 - progress.cpu / 100.0}
         className={'w-100'}
         style={style.bar}
       ></progress>

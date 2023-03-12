@@ -1,14 +1,19 @@
 import { useEffect, useRef, useState } from 'react'
-import { KEY_SEND_MONEY, randomStr } from '@/utils/constants'
+import {
+  ACTION_SEND_MESSAGE,
+  KEY_SEND_MONEY,
+  randomStr,
+} from '@/utils/constants'
 
 interface Props {
   name: string
-  text: string
+  message: string
   action: string
 }
 
 export const ChatService = (props: Props) => {
-  const SOCKET_URL = import.meta.env.VITE_SOCKET_URL || 'ws://localhost:8080'
+  const SOCKET_URL =
+    import.meta.env.VITE_WS_URL || 'ws://localhost:8081/ws/masakari'
   const [messages, setMessages] = useState([props])
   const [money, setMoney] = useState(false)
   const [otherMoney, setOtherMoney] = useState(false)
@@ -24,7 +29,7 @@ export const ChatService = (props: Props) => {
     console.log('Connectinng..')
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
-    socketRef.current = new WebSocket(SOCKET_URL + '/rooms/hoge')
+    socketRef.current = new WebSocket(SOCKET_URL)
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     socketRef.current.onopen = () => console.log('socketRef opened')
@@ -54,9 +59,11 @@ export const ChatService = (props: Props) => {
           updateOtherMoney()
         }
         setMoney(true)
-      } else {
+      } else if (message.action == ACTION_SEND_MESSAGE) {
         setMoney(false)
         setMessages((prevMessages) => [...prevMessages, message])
+      } else {
+        setMoney(false)
       }
       console.log('e', message)
     }
@@ -64,10 +71,11 @@ export const ChatService = (props: Props) => {
 
   const sendMessage = (props: Props) => {
     const aMessage = {
-      name: props.name,
-      text: props.text,
+      // name: props.name,
+      name: randomStr + 'さん',
+      message: props.message,
       action: props.action,
-      id: randomStr,
+      user_id: randomStr,
       emotions: {
         joy: 0,
         sadness: 0,

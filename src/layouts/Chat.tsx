@@ -1,6 +1,6 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { Message } from '@/components/Message'
-import { ChatService, KEY_SEND_MONEY } from '@/utils'
+import { ACTION_SEND_MESSAGE, ChatService, KEY_SEND_MONEY } from '@/utils'
 import { Money } from '@/components/Money'
 import Sound from '/src/money-drop2.mp3'
 import useSound from 'use-sound'
@@ -26,7 +26,7 @@ const initState: Props = { name: '', text: '' }
 
 interface ChatProps {
   name: string
-  text: string
+  message: string
   emotions: Emotions
 }
 
@@ -36,8 +36,8 @@ export const Chat = (state: Props = initState) => {
 
   const [messages, sendMessage, money, otherMoney] = ChatService({
     name: '管理人',
-    text: `ようこそ、${state.name}さん`,
-    action: 'SEND_MESSAGE',
+    message: `ようこそ、${state.name}さん`,
+    action: ACTION_SEND_MESSAGE,
   })
   const scrollBottomRef = useRef<HTMLDivElement>(null)
   const [text, setText] = useState('')
@@ -50,7 +50,11 @@ export const Chat = (state: Props = initState) => {
     if (text.length === 0) return
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
-    sendMessage({ text: text, name: state.name, action: 'SEND_MESSAGE' })
+    sendMessage({
+      message: text,
+      name: state.name,
+      action: ACTION_SEND_MESSAGE,
+    })
     setText('')
   }
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -66,7 +70,7 @@ export const Chat = (state: Props = initState) => {
   const handleMoneyClick = () => {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
-    sendMessage({ text: 'money', name: 'money', action: KEY_SEND_MONEY })
+    sendMessage({ message: 'money', name: 'money', action: KEY_SEND_MONEY })
     play()
     setText('')
   }
@@ -100,7 +104,7 @@ export const Chat = (state: Props = initState) => {
                 <Message
                   key={idx}
                   name={msg.name}
-                  message={msg.text}
+                  message={msg.message}
                   emotions={msg.emotions}
                 />
               )

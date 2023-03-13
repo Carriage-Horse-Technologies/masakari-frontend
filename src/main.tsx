@@ -16,11 +16,11 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
     {/*  clientId={config.clientId}*/}
     {/*  redirectUri={window.location.origin}*/}
     {/*>*/}
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<App />} />
-        </Routes>
-      </BrowserRouter>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<App />} />
+      </Routes>
+    </BrowserRouter>
     {/*</Auth0Provider>*/}
   </React.StrictMode>
 )

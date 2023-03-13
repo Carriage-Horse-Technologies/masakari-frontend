@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import {
+  ACTION_RECV_MASAKARI,
+  ACTION_RECV_STATUS,
   ACTION_SEND_MESSAGE,
   KEY_SEND_MONEY,
   randomStr,
@@ -10,6 +12,7 @@ interface Props {
   message: string
   action: string
 }
+export type ChatPropsType = Props
 
 export const ChatService = (props: Props) => {
   const SOCKET_URL =
@@ -17,8 +20,12 @@ export const ChatService = (props: Props) => {
   const [messages, setMessages] = useState([props])
   const [money, setMoney] = useState(false)
   const [otherMoney, setOtherMoney] = useState(false)
+  const [status, setStatus] = useState(0.0)
   const socketRef = useRef(null)
   const [isPaused, setPause] = useState(false)
+  const [gptMessage, setGptMessage] = useState(
+    '進捗ダメです😇進捗ダメです😇進捗ダメです😇進捗ダメです😇進捗ダメです😇進捗ダメです😇'
+  )
   const updateOtherMoney = () => {
     setOtherMoney((otherMoney) => {
       return !otherMoney
@@ -62,6 +69,13 @@ export const ChatService = (props: Props) => {
       } else if (message.action == ACTION_SEND_MESSAGE) {
         setMoney(false)
         setMessages((prevMessages) => [...prevMessages, message])
+      } else if (message.action == ACTION_RECV_MASAKARI) {
+        setMoney(false)
+        setGptMessage(message.message)
+      } else if (message.action == ACTION_RECV_STATUS) {
+        setMoney(false)
+        console.log(message.status.cpuutilization)
+        setStatus(message.status.cpuutilization)
       } else {
         setMoney(false)
       }
@@ -93,5 +107,5 @@ export const ChatService = (props: Props) => {
     // setMessages((prevMessages) => [...prevMessages, aMessage])
   }
 
-  return [messages, sendMessage, money, otherMoney]
+  return [messages, sendMessage, money, otherMoney, gptMessage, status]
 }

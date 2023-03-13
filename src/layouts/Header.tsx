@@ -7,12 +7,12 @@ import LogoutButton from '@/components/auth/logout'
 
 const Header = () => {
   return (
-    <div className="header">
+    <div className="header ms-4">
       <div
         className={'d-flex flex-row align-content-center align-items-center'}
       >
         <div className="title" style={style.header}>
-          デスマTV
+          まさかりを投げてサーバーを倒せ
         </div>
       </div>
     </div>

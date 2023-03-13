@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@emotion/react": "^11.10.4",
+    "@emotion/styled": "^11.10.6",
     "@types/bootstrap": "^5.2.5",
     "@types/react-bootstrap": "^0.32.31",
     "axios": "^1.1.3",

@@ -5,15 +5,24 @@ import { useState } from 'react'
 import { ProgressBar } from '@/components/ProgressBar'
 import { Transition } from 'react-transition-group'
 import { Money } from '@/components/Money'
+import { ACTION_SEND_MESSAGE, ChatService } from '@/utils'
+import { GptMessage } from '@/components/GptMessage'
 function Stream() {
   const [name, setName] = useState('anonymous')
+  const [messages, sendMessage, money, otherMoney, gptMessage, status] =
+    ChatService({
+      name: '管理人',
+      message: `ようこそ、${name}さん`,
+      action: ACTION_SEND_MESSAGE,
+    })
 
   return (
     <div>
-      <div className={'d-flex flex-column justify-content-between'}>
+      <div className={'d-flex flex-column justify-content-between m-2'}>
         <div>
-          <Header />
-          <ProgressBar />
+          {/*<Header />*/}
+          <GptMessage msg={gptMessage}></GptMessage>
+          <ProgressBar cpu={status} />
         </div>
         <div>
           <div
@@ -22,7 +31,13 @@ function Stream() {
           >
             <Player></Player>
 
-            <Chat name={name} text={''} />
+            <Chat
+              name={name}
+              messages={messages}
+              money={false}
+              otherMoney={false}
+              sendMessage={sendMessage}
+            />
           </div>
         </div>
       </div>

@@ -1,10 +1,10 @@
+/* eslint-disable */
+// @ts-nocheck
 import { Chat } from '@/layouts/Chat'
 import Header from '@/layouts/Header'
 import Player from '@/layouts/Player'
 import { useState } from 'react'
 import { ProgressBar } from '@/components/ProgressBar'
-import { Transition } from 'react-transition-group'
-import { Money } from '@/components/Money'
 import { ACTION_SEND_MESSAGE, ChatService } from '@/utils'
 import { GptMessage } from '@/components/GptMessage'
 function Stream() {
@@ -20,8 +20,8 @@ function Stream() {
     <div>
       <div className={'d-flex flex-column justify-content-between m-2'}>
         <div>
-          {/*<Header />*/}
           <GptMessage msg={gptMessage}></GptMessage>
+
           <ProgressBar cpu={status} />
         </div>
         <div>

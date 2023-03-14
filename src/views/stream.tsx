@@ -1,16 +1,17 @@
 /* eslint-disable */
 // @ts-nocheck
 import { Chat } from '@/layouts/Chat'
-import Header from '@/layouts/Header'
 import Player from '@/layouts/Player'
 import { useState } from 'react'
 import { ProgressBar } from '@/components/ProgressBar'
 import { ACTION_SEND_MESSAGE, ChatService } from '@/utils'
 import { GptMessage } from '@/components/GptMessage'
 import { css } from '@emotion/react'
+import { Modal } from '@/components/Modal'
 
 function Stream() {
   const [name, setName] = useState('anonymous')
+  const [show, setShow] = useState(false)
   const [
     messages,
     sendMessage,
@@ -26,8 +27,14 @@ function Stream() {
     action: ACTION_SEND_MESSAGE,
   })
 
+  if (!show && status > 0.6) {
+    setShow(true)
+  }
+
   return (
     <div className={'w-100 vh-100'}>
+      <Modal setShow={setShow} show={show} />
+
       <div className={'d-flex flex-column justify-content-between mx-2 gap-2'}>
         <div>
           <GptMessage msg={gptMessage}></GptMessage>

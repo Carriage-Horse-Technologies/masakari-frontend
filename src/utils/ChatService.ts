@@ -27,6 +27,7 @@ export const ChatService = (props: Props) => {
     '進捗どうですか？進捗どうですか？進捗どうですか？進捗どうですか？進捗どうですか？進捗どうですか？進捗どうですか？進捗どうですか？進捗どうですか？進捗どうですか？進捗どうですか？進捗どうですか？'
   )
   const [isThrowingMasakari, setThrowingMasakari] = useState(false)
+  const [isBreakingWinddow, setBreakingWindow] = useState(false)
 
   const updateOtherMoney = () => {
     setOtherMoney((otherMoney) => {
@@ -75,6 +76,7 @@ export const ChatService = (props: Props) => {
       } else if (message.action == ACTION_RECV_MASAKARI) {
         setMoney(false)
         setThrowingMasakari(false)
+        setBreakingWindow(false)
         setGptMessage(message.message)
       } else if (message.action == ACTION_RECV_STATUS) {
         setMoney(false)
@@ -112,14 +114,16 @@ export const ChatService = (props: Props) => {
     // setMessages((prevMessages) => [...prevMessages, aMessage])
   }
 
-  // // マサカリを投げた後、1秒後にマサカリを消します
-  // useEffect(() => {
-  //   if (isThrowingMasakari) {
-  //     setTimeout(() => {
-  //       setThrowingMasakari(false)
-  //     }, 1000)
-  //   }
-  // }, [isThrowingMasakari])
+  // マサカリを投げた後、
+  useEffect(() => {
+    if (isThrowingMasakari) {
+      setBreakingWindow(true)
+    }
+
+    return () => {
+      setBreakingWindow(false)
+    }
+  }, [isThrowingMasakari])
 
   return [
     messages,
@@ -129,5 +133,6 @@ export const ChatService = (props: Props) => {
     gptMessage,
     status,
     isThrowingMasakari,
+    isBreakingWinddow,
   ]
 }

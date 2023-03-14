@@ -60,7 +60,7 @@ export const ProgressBar = ({ cpu, memory, traffic, name }: Props) => {
       <progress
         id="issue_progress"
         max="1"
-        value={1.0 - Number(cpu)}
+        value={1.0 - Number(cpu) / 100.0}
         className={'w-100'}
         style={style.bar}
       ></progress>

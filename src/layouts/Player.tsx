@@ -1,11 +1,15 @@
 import { LegacyPage } from '@/components/LegacyPage'
 
-const Player = () => {
+type Props = {
+  isBreakingWindow: boolean
+}
+
+const Player = ({ isBreakingWindow }: Props) => {
   return (
     <div
       className={'w-100 h-100 d-flex align-items-center justify-content-center'}
     >
-      <LegacyPage />
+      <LegacyPage isBreakingWindow={isBreakingWindow} />
     </div>
   )
 }

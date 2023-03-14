@@ -17,8 +17,7 @@ import { Money } from '@/components/Money'
 import Sound from '/src/money-drop2.mp3'
 import useSound from 'use-sound'
 import Sound2 from '/src/clearing1.mp3'
-import chatStyle from './Chat.module.css'
-import Masakari from '../masakari.png'
+import Masakari from '@/components/Masakari'
 
 interface Props {
   name: string
@@ -148,13 +147,7 @@ export const Chat = ({
           <button disabled={!text} onClick={handleButtonClick}>
             送信
           </button>
-          {isThrowingMasakari ? (
-            <div className={chatStyle['fade-in-image']}>
-              <img src={Masakari} />
-            </div>
-          ) : (
-            <></>
-          )}
+          {isThrowingMasakari ? <Masakari /> : <></>}
         </div>
         {/*<button*/}
         {/*  className={'btn btn-lg btn-warning w-100'}*/}

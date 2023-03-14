@@ -10,12 +10,20 @@ import { GptMessage } from '@/components/GptMessage'
 import { css } from '@emotion/react'
 function Stream() {
   const [name, setName] = useState('anonymous')
-  const [messages, sendMessage, money, otherMoney, gptMessage, status, isThrowingMasakari] =
-    ChatService({
-      name: '管理人',
-      message: `ようこそ、${name}さん`,
-      action: ACTION_SEND_MESSAGE,
-    })
+  const [
+    messages,
+    sendMessage,
+    money,
+    otherMoney,
+    gptMessage,
+    status,
+    isThrowingMasakari,
+    isBreakingWindow,
+  ] = ChatService({
+    name: '管理人',
+    message: `ようこそ、${name}さん`,
+    action: ACTION_SEND_MESSAGE,
+  })
 
   return (
     <div>
@@ -31,7 +39,7 @@ function Stream() {
             style={style.back}
           >
             <div className={'w-75'} css={viewerStyle}>
-              <Player></Player>
+              <Player isBreakingWindow={isBreakingWindow}></Player>
             </div>
             <Chat
               name={name}

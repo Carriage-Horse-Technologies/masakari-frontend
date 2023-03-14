@@ -34,7 +34,7 @@ export const GptMessage = ({ msg }: Props) => {
           fontWeight: '700',
         }}
       >
-        <div className={'min-vw-100'}>
+        <div className={'vw-100'}>
           <p css={electricStyle}>
             <span> {msg}</span>
           </p>

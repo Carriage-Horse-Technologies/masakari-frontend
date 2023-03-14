@@ -140,6 +140,9 @@ const electricStyle = css`
   font-size: 3em;
   font-weight: bold;
   background: #333333;
+  p {
+    margin-bottom: 0;
+  }
   :after {
     content: ' ';
     display: block;

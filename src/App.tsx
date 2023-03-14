@@ -1,13 +1,14 @@
 import Stream from '@/views/stream'
 import './App.css'
 import backStyle from './App.module.css'
+import { css } from '@emotion/react'
 
 function App() {
-  //console.log('app')
+  console.log('app')
 
   return (
     <div className={'App'}>
-      <div className={backStyle.back}>
+      <div>
         <Stream />
       </div>
     </div>
@@ -28,8 +29,5 @@ const style = {
   userIcon: {
     height: '50px',
     borderRadius: '50%',
-  },
-  back: {
-    backgroundImage: `url(`,
   },
 }

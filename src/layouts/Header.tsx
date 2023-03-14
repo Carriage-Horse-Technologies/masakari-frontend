@@ -7,7 +7,7 @@ import LogoutButton from '@/components/auth/logout'
 
 const Header = () => {
   return (
-    <div className="header ms-4">
+    <div className="header">
       <div
         className={'d-flex flex-row align-content-center align-items-center'}
       >

@@ -27,7 +27,7 @@ function Stream() {
 
   return (
     <div>
-      <div className={'d-flex flex-column justify-content-between m-2'}>
+      <div className={'d-flex flex-column justify-content-between mx-2'}>
         <div>
           <GptMessage msg={gptMessage}></GptMessage>
 

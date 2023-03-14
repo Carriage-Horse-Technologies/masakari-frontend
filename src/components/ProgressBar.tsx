@@ -56,7 +56,7 @@ export const ProgressBar = ({ cpu, memory, traffic, name }: Props) => {
 
   return (
     <div>
-      {/*<p style={style.header}>サーバーのHP</p>*/}
+      <p style={style.header}>サーバーのHP</p>
       <progress
         id="issue_progress"
         max="1"
@@ -73,5 +73,8 @@ const style = {
   },
   header: {
     marginBottom: '0',
+    fontSize: '1.5em',
+    fontFamily: 'DotGothic16',
+    fontWeight: 600,
   },
 }

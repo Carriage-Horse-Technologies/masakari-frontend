@@ -31,6 +31,8 @@ export const Message = (state: Props = initState) => {
           background: state.emotions ? colorChanger(state.emotions) : '#e0e0e0',
           padding: '10px 20px',
           marginBottom: '0',
+          color: '#0a0a0a',
+          fontFamily: 'Reggae One',
         }}
       >
         {state.message}
@@ -131,6 +133,7 @@ function colorChanger(emotions: Emotions) {
 
 const style = {
   sub: {
+    fontFamily: 'Noto Sans JP',
     fontSize: '0.7em',
   },
 }

@@ -8,6 +8,8 @@ type Props = {
   isBreakingWindow: boolean
 }
 let timer: number
+let expiredTime: number
+
 export const LegacyPage = ({ isBreakingWindow }: Props) => {
   const [waremadosToRender, setWaremadosToRender] = useState([
     { offsetX: 0, offsetY: 0, key: 0, waremado: '' },
@@ -43,6 +45,14 @@ export const LegacyPage = ({ isBreakingWindow }: Props) => {
           breakWindow()
         }, 1000)
       }, 2000)
+
+      if (!expiredTime) {
+        expiredTime = setInterval(() => {
+          setWaremadosToRender([])
+          clearInterval(expiredTime)
+          expiredTime = 0
+        }, 10000)
+      }
     }
 
     return () => {

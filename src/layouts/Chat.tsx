@@ -162,7 +162,7 @@ export const Chat = ({
 
 const style = {
   body: {
-    height: '700px',
+    height: '560px',
   },
   listBox: {},
 }

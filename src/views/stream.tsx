@@ -1,77 +1,77 @@
 /* eslint-disable */
 // @ts-nocheck
-import {Chat} from '@/layouts/Chat'
+import { Chat } from '@/layouts/Chat'
 import Header from '@/layouts/Header'
 import Player from '@/layouts/Player'
-import {useState} from 'react'
-import {ProgressBar} from '@/components/ProgressBar'
-import {ACTION_SEND_MESSAGE, ChatService} from '@/utils'
-import {GptMessage} from '@/components/GptMessage'
-import {css} from '@emotion/react'
+import { useState } from 'react'
+import { ProgressBar } from '@/components/ProgressBar'
+import { ACTION_SEND_MESSAGE, ChatService } from '@/utils'
+import { GptMessage } from '@/components/GptMessage'
+import { css } from '@emotion/react'
 
 function Stream() {
-    const [name, setName] = useState('anonymous')
-    const [
-        messages,
-        sendMessage,
-        money,
-        otherMoney,
-        gptMessage,
-        status,
-        isThrowingMasakari,
-        isBreakingWindow,
-    ] = ChatService({
-        name: '管理人',
-        message: `ようこそ、${name}さん`,
-        action: ACTION_SEND_MESSAGE,
-    })
+  const [name, setName] = useState('anonymous')
+  const [
+    messages,
+    sendMessage,
+    money,
+    otherMoney,
+    gptMessage,
+    status,
+    isThrowingMasakari,
+    isBreakingWindow,
+  ] = ChatService({
+    name: '管理人',
+    message: `ようこそ、${name}さん`,
+    action: ACTION_SEND_MESSAGE,
+  })
 
-    return (
+  return (
+    <div className={'w-100 vh-100'}>
+      <div className={'d-flex flex-column justify-content-between mx-2 gap-2'}>
         <div>
-            <div className={'d-flex flex-column justify-content-between mx-2'}>
-                <div>
-                    <GptMessage msg={gptMessage}></GptMessage>
-                    <ProgressBar cpu={status}/>
-                </div>
-                <div
-                    className={'d-flex flex-row justify-content-evenly'}
-                    style={style.back}
-                >
-                    <div className={'w-75 d-inline-block'} css={viewerStyle}>
-                        <Player isBreakingWindow={isBreakingWindow}></Player>
-                    </div>
-                    <Chat
-                        name={name}
-                        messages={messages}
-                        money={false}
-                        otherMoney={false}
-                        sendMessage={sendMessage}
-                        isThrowingMasakari={isThrowingMasakari}
-                    />
-                </div>
-            </div>
+          <GptMessage msg={gptMessage}></GptMessage>
+          <ProgressBar cpu={status} />
         </div>
-    )
+        <div
+          className={'d-flex flex-row justify-content-evenly'}
+          style={style.back}
+        >
+          <div className={'w-75 d-inline-block'} css={viewerStyle}>
+            <Player isBreakingWindow={isBreakingWindow}></Player>
+          </div>
+          <Chat
+            name={name}
+            messages={messages}
+            money={false}
+            otherMoney={false}
+            sendMessage={sendMessage}
+            isThrowingMasakari={isThrowingMasakari}
+          />
+        </div>
+      </div>
+    </div>
+  )
 }
 
 export default Stream
 const style = {
-    header: {
-        flex: '1',
-        fontSize: '3rem',
-        fontFamily: 'DotGothic16',
-    },
-    title: {
-        fontSize: '30px',
-        fontWeight: 'bold',
-    },
-    userIcon: {
-        height: '50px',
-        borderRadius: '50%',
-    },
-    back: {
-        backgroundColor: '#f0f0f0b0',
-    },
+  header: {
+    flex: '1',
+    fontSize: '3rem',
+    fontFamily: 'DotGothic16',
+  },
+  title: {
+    fontSize: '30px',
+    fontWeight: 'bold',
+  },
+  userIcon: {
+    height: '50px',
+    borderRadius: '50%',
+  },
+  back: {
+    backgroundColor: '#f0f0f0b0',
+  },
 }
 
 const viewerStyle = css`

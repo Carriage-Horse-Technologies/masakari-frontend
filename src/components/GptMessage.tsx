@@ -21,118 +21,50 @@ const initState = {
 }
 export const GptMessage = ({ msg }: Props) => {
   return (
-    <div
-      className={
-        'd-flex flex-column justify-content-between align-items-center'
-      }
-    >
+    <div className={'d-flex flex-column justify-content-between'}>
       <p css={titleStyle}>
         サーバーからの煽りに負けずにまさかりを投げてサーバーを倒せ
       </p>
-      <p
-        style={{
-          fontWeight: '700',
-        }}
+      <div
+        className={'d-flex flex-row justify-content-between align-items-center'}
       >
-        <div className={'vw-100'}>
-          <p css={electricStyle}>
-            <span> {msg}</span>
-          </p>
+        <div>
+          <img
+            className={'rounded-circle'}
+            src="https://www.notchman.tech/_next/image?url=%2Fprofile.jpg&w=256&q=75"
+            width={128}
+            height={128}
+            alt={'プロフィール画像'}
+            style={{
+              objectFit: 'cover',
+              aspectRatio: '1/1',
+            }}
+          />
+          <span css={notchStyle}> からの有り難いお言葉</span>
         </div>
-      </p>
+        <p
+          style={{
+            fontWeight: '700',
+          }}
+        >
+          <div css={viewStyle}>
+            <p css={electricStyle}>
+              <span> {msg}</span>
+            </p>
+          </div>
+        </p>
+      </div>
     </div>
   )
 }
 
-const Color = {
-  Joy: 'yellow',
-  Sadness: '#77FFFF',
-  Anticipation: 'yellow',
-  Surprise: 'red',
-  Anger: 'red',
-  Fear: 'blue',
-  Disgust: 'red',
-  Trust: 'yellow',
-}
-
-function colorChanger(emotions: Emotions) {
-  const arr = [
-    {
-      key: 'joy',
-      value: emotions.joy,
-    },
-    {
-      key: 'sadness',
-      value: emotions.sadness,
-    },
-    {
-      key: 'anticipation',
-      value: emotions.anticipation,
-    },
-    {
-      key: 'surprise',
-      value: emotions.surprise,
-    },
-    {
-      key: 'anger',
-      value: emotions.anger,
-    },
-    {
-      key: 'fear',
-      value: emotions.fear,
-    },
-    {
-      key: 'disgust',
-      value: emotions.disgust,
-    },
-    {
-      key: 'trust',
-      value: emotions.trust,
-    },
-  ]
-  const result = arr.map(function (p) {
-    return p.value
-  })
-
-  let emotion = ''
-  arr.forEach((a) => {
-    if (a.value === Math.max.apply(null, result)) {
-      if (Math.max.apply(null, result) < 0.1) {
-        emotion = ''
-        return
-      }
-      emotion = a.key
-    }
-  })
-
-  switch (emotion) {
-    case 'joy':
-      return Color.Joy
-    case 'sadness':
-      return Color.Sadness
-    case 'anticipation':
-      return Color.Anticipation
-    case 'surprise':
-      return Color.Surprise
-    case 'anger':
-      return Color.Anger
-    case 'fear':
-      return Color.Fear
-    case 'disgust':
-      return Color.Disgust
-    case 'trust':
-      return Color.Trust
-    default:
-      return '#e0e0e0'
-  }
-}
-
-const style = {
-  sub: {
-    fontSize: '0.7em',
-    fontWeight: '700',
-  },
-}
+const viewStyle = css`
+  width: 78vw;
+`
+const notchStyle = css`
+  font-size: 1.5em;
+  font-family: 'DotGothic16', cursive;
+`
 const electricStyle = css`
   overflow: hidden;
   position: relative;

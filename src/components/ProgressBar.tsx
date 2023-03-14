@@ -69,7 +69,7 @@ export const ProgressBar = ({ cpu, memory, traffic, name }: Props) => {
 }
 const style = {
   bar: {
-    height: '30px',
+    height: '48px',
   },
   header: {
     marginBottom: '0',

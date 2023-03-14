@@ -11,32 +11,35 @@ export const Modal = ({ show, setShow }: Props) => {
     return (
       <div css={overlayStyle}>
         <div css={contentStyle}>
-          <button
-            css={closeButtonStyle}
-            onClick={() => setShow(false)}
-          ></button>
+          <div css={contentChildStyle}>
+            <button
+              css={closeButtonStyle}
+              onClick={() => setShow(false)}
+            ></button>
 
-          <p css={textStyle}>
-            今までありがとう！<br></br>その若さを活かしてものづくりを楽しんで！
-          </p>
-          <p css={textMiniStyle}>by 馬車馬テクノロジーズ</p>
-          <div className={'d-flex flex-row justify-content-between'}>
-            <img
-              css={leftIconStyle}
-              width={128}
-              height={128}
-              src={
-                'https://objectstorage.ap-tokyo-1.oraclecloud.com/n/nr7eduszgfzb/b/image-bucket/o/allo%2Fcracker.gif'
-              }
-            ></img>
-            <img
-              css={rightIconStyle}
-              width={128}
-              height={128}
-              src={
-                'https://objectstorage.ap-tokyo-1.oraclecloud.com/n/nr7eduszgfzb/b/image-bucket/o/allo%2Fcracker.gif'
-              }
-            ></img>
+            <p css={textStyle}>
+              今までありがとう！<br></br>
+              その若さを活かしてものづくりを楽しんで！
+            </p>
+            <p css={textMiniStyle}>by 馬車馬テクノロジーズ</p>
+            <div className={'d-flex flex-row justify-content-between'}>
+              <img
+                css={leftIconStyle}
+                width={128}
+                height={128}
+                src={
+                  'https://objectstorage.ap-tokyo-1.oraclecloud.com/n/nr7eduszgfzb/b/image-bucket/o/allo%2Fcracker.gif'
+                }
+              ></img>
+              <img
+                css={rightIconStyle}
+                width={128}
+                height={128}
+                src={
+                  'https://objectstorage.ap-tokyo-1.oraclecloud.com/n/nr7eduszgfzb/b/image-bucket/o/allo%2Fcracker.gif'
+                }
+              ></img>
+            </div>
           </div>
         </div>
       </div>
@@ -68,8 +71,14 @@ const overlayStyle = css`
 const contentStyle = css`
   z-index: 2000;
   width: 50%;
+  height: 36%;
+  background-image: url('https://i.pinimg.com/736x/17/e9/4a/17e94af1abbab5e3feefe6ced845a274.jpg');
+  background-size: cover;
+`
+const contentChildStyle = css`
+  height: 100%;
   padding: 1em;
-  background: #fff;
+  background-color: rgba(250, 250, 250, 0.7);
 `
 const textStyle = css`
   font-size: 2em;

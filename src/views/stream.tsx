@@ -27,7 +27,7 @@ function Stream() {
     action: ACTION_SEND_MESSAGE,
   })
 
-  if (!show && Number(cpu) / 100.0 > 0.6) {
+  if (!show && Number(status) / 100.0 > 0.6) {
     setShow(true)
   }
 

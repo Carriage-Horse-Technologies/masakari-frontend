@@ -22,12 +22,13 @@ const Header = () => {
 const style = {
   header: {
     flex: '1',
-    fontSize: '3rem',
+    fontWeight: '700',
+    fontSize: '4rem',
     fontFamily: 'DotGothic16',
   },
   title: {
-    fontSize: '30px',
-    fontWeight: 'bold',
+    fontSize: '48px',
+    fontWeight: '700',
   },
   userIcon: {
     height: '50px',

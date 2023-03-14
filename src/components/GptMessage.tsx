@@ -32,8 +32,8 @@ export const GptMessage = ({ msg }: Props) => {
           <img
             className={'rounded-circle'}
             src="https://www.notchman.tech/_next/image?url=%2Fprofile.jpg&w=256&q=75"
-            width={128}
-            height={128}
+            width={96}
+            height={96}
             alt={'プロフィール画像'}
             style={{
               objectFit: 'cover',
@@ -62,14 +62,14 @@ const viewStyle = css`
   width: 78vw;
 `
 const notchStyle = css`
-  font-size: 1.5em;
+  font-size: 1.2em;
   font-family: 'DotGothic16', cursive;
 `
 const electricStyle = css`
   overflow: hidden;
   position: relative;
   color: #ffb400;
-  font-size: 3em;
+  font-size: 2.5em;
   font-weight: bold;
   background: #333333;
   p {

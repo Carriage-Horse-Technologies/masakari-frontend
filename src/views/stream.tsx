@@ -7,6 +7,7 @@ import { useState } from 'react'
 import { ProgressBar } from '@/components/ProgressBar'
 import { ACTION_SEND_MESSAGE, ChatService } from '@/utils'
 import { GptMessage } from '@/components/GptMessage'
+import { css } from '@emotion/react'
 function Stream() {
   const [name, setName] = useState('anonymous')
   const [messages, sendMessage, money, otherMoney, gptMessage, status] =
@@ -29,8 +30,9 @@ function Stream() {
             className={'d-flex flex-row justify-content-evenly'}
             style={style.back}
           >
-            <Player></Player>
-
+            <div className={'w-75'} css={viewerStyle}>
+              <Player></Player>
+            </div>
             <Chat
               name={name}
               messages={messages}
@@ -65,3 +67,27 @@ const style = {
     paddingTop: '1rem',
   },
 }
+
+const viewerStyle = css`
+  margin: 2em 0;
+  position: relative;
+  padding: 0.5em 1.5em;
+  border-top: solid 2px black;
+  border-bottom: solid 2px black;
+  :before,
+  :after {
+    content: '';
+    position: absolute;
+    top: -10px;
+    width: 2px;
+    height: -webkit-calc(100% + 20px);
+    height: calc(100% + 20px);
+    background-color: black;
+  }
+  :before {
+    left: 10px;
+  }
+  :after {
+    right: 10px;
+  }
+`

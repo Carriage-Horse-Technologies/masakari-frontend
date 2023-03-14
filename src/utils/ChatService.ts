@@ -24,7 +24,7 @@ export const ChatService = (props: Props) => {
   const socketRef = useRef(null)
   const [isPaused, setPause] = useState(false)
   const [gptMessage, setGptMessage] = useState(
-    '進捗ダメです😇進捗ダメです😇進捗ダメです😇進捗ダメです😇進捗ダメです😇進捗ダメです😇'
+    '進捗どうですか？進捗どうですか？進捗どうですか？進捗どうですか？進捗どうですか？進捗どうですか？進捗どうですか？進捗どうですか？進捗どうですか？進捗どうですか？進捗どうですか？進捗どうですか？'
   )
   const updateOtherMoney = () => {
     setOtherMoney((otherMoney) => {

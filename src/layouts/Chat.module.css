@@ -1,0 +1,20 @@
+.fade-in-image {
+  display: flex;
+  position: fixed;
+  height: 200px;
+  bottom: 10px;
+  right: 10px;
+  animation: throwing 2s infinite;
+}
+
+@keyframes throwing {
+  0% {
+    transform: translateX(0%) translateY(0%) rotate(0deg);
+  }
+  50% {
+    transform: translateX(-400%) translateY(-200%) rotate(-3600deg);
+  }
+  100% {
+    transform: translateX(0%) translateY(0%) rotate(0deg);
+  }
+}

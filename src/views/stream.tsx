@@ -9,7 +9,7 @@ import { ACTION_SEND_MESSAGE, ChatService } from '@/utils'
 import { GptMessage } from '@/components/GptMessage'
 function Stream() {
   const [name, setName] = useState('anonymous')
-  const [messages, sendMessage, money, otherMoney, gptMessage, status] =
+  const [messages, sendMessage, money, otherMoney, gptMessage, status, isThrowingMasakari] =
     ChatService({
       name: '管理人',
       message: `ようこそ、${name}さん`,
@@ -37,6 +37,7 @@ function Stream() {
               money={false}
               otherMoney={false}
               sendMessage={sendMessage}
+              isThrowingMasakari={isThrowingMasakari}
             />
           </div>
         </div>

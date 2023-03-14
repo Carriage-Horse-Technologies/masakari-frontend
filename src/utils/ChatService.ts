@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import {
   ACTION_RECV_MASAKARI,
   ACTION_RECV_STATUS,
@@ -26,6 +26,8 @@ export const ChatService = (props: Props) => {
   const [gptMessage, setGptMessage] = useState(
     '進捗ダメです😇進捗ダメです😇進捗ダメです😇進捗ダメです😇進捗ダメです😇進捗ダメです😇'
   )
+  const [isThrowingMasakari, setThrowingMasakari] = useState(false)
+
   const updateOtherMoney = () => {
     setOtherMoney((otherMoney) => {
       return !otherMoney
@@ -52,6 +54,7 @@ export const ChatService = (props: Props) => {
       socketRefCurrent.close()
     }
   }, [])
+
   useEffect(() => {
     if (!socketRef.current) return
 
@@ -71,6 +74,7 @@ export const ChatService = (props: Props) => {
         setMessages((prevMessages) => [...prevMessages, message])
       } else if (message.action == ACTION_RECV_MASAKARI) {
         setMoney(false)
+        setThrowingMasakari(false)
         setGptMessage(message.message)
       } else if (message.action == ACTION_RECV_STATUS) {
         setMoney(false)
@@ -84,6 +88,7 @@ export const ChatService = (props: Props) => {
   }, [isPaused])
 
   const sendMessage = (props: Props) => {
+    setThrowingMasakari(true)
     const aMessage = {
       // name: props.name,
       name: randomStr + 'さん',
@@ -107,5 +112,22 @@ export const ChatService = (props: Props) => {
     // setMessages((prevMessages) => [...prevMessages, aMessage])
   }
 
-  return [messages, sendMessage, money, otherMoney, gptMessage, status]
+  // // マサカリを投げた後、1秒後にマサカリを消します
+  // useEffect(() => {
+  //   if (isThrowingMasakari) {
+  //     setTimeout(() => {
+  //       setThrowingMasakari(false)
+  //     }, 1000)
+  //   }
+  // }, [isThrowingMasakari])
+
+  return [
+    messages,
+    sendMessage,
+    money,
+    otherMoney,
+    gptMessage,
+    status,
+    isThrowingMasakari,
+  ]
 }

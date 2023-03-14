@@ -15,9 +15,6 @@ const style = {
   title: {
     color: 'black',
   },
-  body: {
-    backgroundColor: '#0a0a0a',
-  },
 }
 
 export default Player

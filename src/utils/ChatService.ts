@@ -36,7 +36,7 @@ export const ChatService = (props: Props) => {
     return true
   }
   useEffect(() => {
-    console.log('Connectinng..')
+    //console.log('Connectinng..')
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     socketRef.current = new WebSocket(SOCKET_URL)
@@ -63,7 +63,7 @@ export const ChatService = (props: Props) => {
     // @ts-ignore
     socketRef.current.onmessage = (e) => {
       if (isPaused) return
-      console.log(e.data)
+      //console.log(e.data)
       const message = JSON.parse(e.data)
       if (message.action === KEY_SEND_MONEY) {
         if (message.id && message.id !== randomStr) {
@@ -80,12 +80,12 @@ export const ChatService = (props: Props) => {
         setGptMessage(message.message)
       } else if (message.action == ACTION_RECV_STATUS) {
         setMoney(false)
-        console.log(message.status.cpuutilization)
+        console.log(message.status)
         setStatus(message.status.cpuutilization)
       } else {
         setMoney(false)
       }
-      console.log('e', message)
+      //console.log('e', message)
     }
   }, [isPaused])
 

@@ -62,7 +62,7 @@ export const Chat = ({
   const [text, setText] = useState('')
 
   useEffect(() => {
-    console.log('dispatch')
+    //console.log('dispatch')
     if (otherMoney) play2()
   }, [otherMoney])
 

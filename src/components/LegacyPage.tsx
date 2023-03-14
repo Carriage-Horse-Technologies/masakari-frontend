@@ -61,7 +61,7 @@ export const LegacyPage = ({ isBreakingWindow }: Props) => {
       })}
       <Iframe
         id="legacy"
-        url="http://legacy-stack.yukinissie.com/"
+        url="https://legacy-stack.yukinissie.com/"
         width="100%"
         height="100%"
       />

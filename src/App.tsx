@@ -3,7 +3,7 @@ import './App.css'
 import backStyle from './App.module.css'
 
 function App() {
-  console.log('app')
+  //console.log('app')
 
   return (
     <div className={'App'}>

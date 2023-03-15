@@ -100,15 +100,15 @@ const electricStyle = css`
     -webkit-animation-name: marquee;
     -webkit-animation-timing-function: linear;
     -webkit-animation-iteration-count: infinite;
-    -webkit-animation-duration: 12s;
+    -webkit-animation-duration: 16s;
     -moz-animation-name: marquee;
     -moz-animation-timing-function: linear;
     -moz-animation-iteration-count: infinite;
-    -moz-animation-duration: 12s;
+    -moz-animation-duration: 16s;
     animation-name: marquee;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
-    animation-duration: 12s;
+    animation-duration: 16s;
   }
 
   @-webkit-keyframes marquee {

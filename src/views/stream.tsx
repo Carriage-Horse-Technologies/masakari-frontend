@@ -12,6 +12,7 @@ import { Modal } from '@/components/Modal'
 function Stream() {
   const [name, setName] = useState('anonymous')
   const [show, setShow] = useState(false)
+  const [event, setEvent] = useState(true)
   const [
     messages,
     sendMessage,
@@ -27,8 +28,10 @@ function Stream() {
     action: ACTION_SEND_MESSAGE,
   })
 
-  if (!show && Number(status) / 100.0 > 0.6) {
+  if (event && !show && Number(status) / 100.0 > 0.8) {
     setShow(true)
+    //一度だけイベントを発火させる
+    setEvent(false)
   }
 
   return (
